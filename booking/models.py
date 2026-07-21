@@ -30,6 +30,16 @@ class Booking(models.Model):
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
     date = models.DateField()
     time = models.TimeField()
+    status = models.CharField(
+        max_length=20,
+        choices=[
+            ('pending', 'Pending'),
+            ('confirmed', 'Confirmed'),
+            ('completed', 'Completed'),
+            ('cancelled', 'Cancelled'),
+        ],
+        default='pending'
+    )
 
     def __str__(self):
         return f"{self.customer_name} - {self.service.name} with {self.stylist.name} on {self.date} at {self.time}"
