@@ -1,5 +1,6 @@
 from rest_framework import viewsets, permissions
 from .models import Category, Service, Stylist, Booking, Payment
+from rest_framework.permissions import AllowAny
 from .serializers import (
     CategorySerializer,
     ServiceSerializer,
@@ -30,6 +31,7 @@ class StylistViewSet(viewsets.ModelViewSet):
 class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
+    permission_classes = [AllowAny]
 
 
 class PaymentViewSet(viewsets.ModelViewSet):
